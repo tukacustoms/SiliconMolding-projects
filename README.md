@@ -1,1093 +1,963 @@
 # TUKA CUSTOMS // ENGINEERING LAB
-## Silicone Mold Manufacturing & Casting Development
+## Silicone Mold Manufacturing & Syringe Injection Development
 
 <p align="center">
 
-**ENGINEERING NOTES · MATERIAL SCIENCE · MOLD DESIGN · MANUFACTURING**
+**ENGINEERING NOTES · MATERIAL SCIENCE · MOLD DESIGN · ADDITIVE MANUFACTURING**
 
-`RESEARCH` `PROTOTYPING` `SILICONE CASTING` `DFM`
+`SHORE A 55` `SYRINGE FILLING` `MOLD ENGINEERING` `PROTOTYPING`
 
-**Project:** Silicone Mold Development  
+**Project:** Custom Silicone Mold Development  
 **Department:** Engineering & Product Design  
-**Status:** Theoretical Study / Pre-Prototype  
-**Revision:** 01  
-**Origin:** Tuka Customs Engineering Lab
+**Revision:** 02  
+**Status:** Theoretical Study / Pre-Prototype
 
 </p>
 
 ---
 
-# 00. PROJECT OVERVIEW
+# 00. PROJECT OBJECTIVE
 
-## Objective
+The objective of this project is to design and manufacture a custom rigid mold assembly capable of producing silicone negatives from custom-designed master components.
 
-This project documents the theoretical study and development of a custom silicone mold manufacturing process, starting with the design of a rigid, 3D-printed mold assembly and progressing toward silicone casting, curing and demolding.
+The mold will be manufactured using 3D printing and will incorporate a custom mechanical assembly, a removable central insert, a syringe-based filling system and dedicated air evacuation channels.
 
-The objective is to develop a repeatable manufacturing process that allows me to produce silicone negatives from custom-designed master parts.
+The selected target silicone hardness is Shore A 55.
 
-Rather than immediately manufacturing a mold through trial and error, I want to understand the physical, mechanical and material principles behind the process before committing to the first prototype.
+Unlike conventional gravity pouring, this project will use a manual syringe to introduce the uncured silicone into the mold cavity.
 
-The main areas of study are:
+This changes several important design considerations, particularly:
 
-- Mold architecture and mechanical design.
-- Master preparation and positioning.
-- Silicone properties and material selection.
-- Pouring channels and air evacuation.
-- Mold sealing and structural integrity.
-- Gravity pouring and bubble prevention.
-- Curing behavior and material compatibility.
-- Demolding and mechanical extraction.
-- Quality inspection and process optimization.
+- Injection channel geometry.
+- Flow resistance.
+- Air evacuation.
+- Mold sealing.
+- Structural rigidity.
+- Pressure distribution.
+- Material viscosity.
+- Filling time and curing time.
+- Mechanical extraction.
 
-**Development philosophy:** Understand the process, design the equipment, manufacture the prototype, test the results and document every improvement.
+The intention is to understand the theoretical principles behind each component before manufacturing the first prototype.
 
----
-
-# 01. UNDERSTANDING THE MANUFACTURING PROCESS
-
-## 1.1 What is a silicone negative mold?
-
-A silicone negative mold is a flexible reproduction of the external geometry of a master component.
-
-The master is the original positive geometry that defines the final shape of the mold cavity.
-
-During manufacturing, liquid silicone is poured around the master. After curing, the silicone solidifies and reproduces the surface details of the master.
-
-Once the master is removed, the resulting silicone cavity can be used to reproduce the original geometry through subsequent casting operations.
-
-The process can be divided into four fundamental stages:
-
-1. Master preparation.
-2. Mold assembly and silicone pouring.
-3. Silicone curing and master extraction.
-4. Mold inspection and preparation for production.
-
-### Basic manufacturing sequence
-
-```text
-MASTER COMPONENT
-       |
-       v
-MASTER PREPARATION
-       |
-       v
-RIGID MOLD BOX ASSEMBLY
-       |
-       v
-SILICONE POURING
-       |
-       v
-CURING
-       |
-       v
-OPEN OUTER MOLD HALVES
-       |
-       v
-REMOVE MASTER CARRIER
-       |
-       v
-SEPARATE MASTER FROM SILICONE
-       |
-       v
-SILICONE NEGATIVE READY
-```
-
-## 1.2 Positive and negative geometry
-
-Understanding the relationship between positive and negative geometry is essential.
-
-- **Positive:** The original master component.
-- **Negative:** The cavity formed by the cured silicone.
-- **Casting:** The material subsequently introduced into the silicone cavity to reproduce the positive geometry.
-
-The quality of the final reproduction depends heavily on the accuracy of the original master, its surface condition, the silicone material and the casting process.
-
-A silicone mold can reproduce very small surface details, but it will also reproduce imperfections, scratches and unwanted features present on the master.
-
-For this reason, master preparation is an important part of mold manufacturing.
+**Development approach:** Research → CAD Design → Manufacturing → Assembly → Silicone Filling → Curing → Inspection → Optimization.
 
 ---
 
-# 02. MOLD ARCHITECTURE AND MECHANICAL DESIGN
+# 01. UNDERSTANDING THE SILICONE MATERIAL
 
-## 2.1 Rigid mold box
+## 1.1 Shore hardness
 
-The rigid mold box acts as the external structure that contains the liquid silicone during pouring and curing.
+Shore hardness is a measurement of a material's resistance to indentation.
 
-Its main functions are:
+For elastomeric materials, Shore A is commonly used to describe the hardness of flexible rubber and silicone.
 
-- Maintain the master in the correct position.
-- Contain the liquid silicone.
-- Define the external dimensions of the silicone block.
-- Prevent deformation during pouring.
-- Provide mechanical access for assembly and disassembly.
-- Support the pouring and venting systems.
+The selected target for this project is:
 
-For this project, I am developing a custom mold box using 3D-printed components.
+**Shore A 55**
 
-This approach allows me to manufacture complex geometries, experiment with different configurations and modify the design without requiring conventional machining.
+This represents a relatively firm elastomer compared with softer silicone formulations.
 
-## 2.2 Three-piece mold architecture
+Its mechanical behavior is important because it directly influences the performance of the finished silicone mold.
 
-The current design uses three main mechanical components:
+Relevant properties include:
+
+| Property | Importance |
+|---|---|
+| Shore hardness | Resistance to indentation and deformation |
+| Tensile strength | Resistance to tensile loading |
+| Tear strength | Resistance to tearing during extraction |
+| Elongation at break | Ability to stretch before rupture |
+| Elastic recovery | Ability to return to its original geometry |
+| Viscosity | Resistance to flow before curing |
+| Shrinkage | Dimensional changes during curing |
+
+A Shore A 55 silicone may provide a useful balance between dimensional stability and flexibility.
+
+However, hardness alone does not determine whether a silicone is suitable for the intended mold geometry.
+
+Tear strength and elongation are particularly important when extracting masters with undercuts or complex surfaces.
+
+## 1.2 Important distinction: hardness versus viscosity
+
+One of the most important material considerations is understanding that Shore hardness and viscosity describe different properties.
+
+**Shore hardness** describes the mechanical resistance of the cured material.
+
+**Viscosity** describes the resistance of the uncured liquid material to flow.
+
+A silicone with Shore A 55 can have different uncured viscosities depending on its chemical formulation.
+
+This is particularly important because the project uses syringe-based filling.
+
+Before selecting the final silicone, I need to obtain its technical datasheet and verify:
+
+- Uncured viscosity.
+- Mixing ratio.
+- Pot life.
+- Curing time.
+- Shore hardness.
+- Tensile strength.
+- Tear strength.
+- Elongation at break.
+- Linear shrinkage, if specified.
+- Compatibility with the master and mold materials.
+
+The selected silicone must be suitable for the intended syringe-filling method.
+
+---
+
+# 02. MOLD ARCHITECTURE
+
+## 2.1 Rigid printed mold enclosure
+
+The external mold structure will be manufactured using 3D printing.
+
+Its primary function is to contain the liquid silicone and maintain the correct position of the master during filling and curing.
+
+The rigid structure must provide:
+
+- Dimensional stability.
+- Accurate alignment.
+- Adequate sealing.
+- Structural support.
+- Access to the injection port.
+- Access to the air vents.
+- A controlled extraction mechanism.
+
+The enclosure is designed around a three-piece architecture.
+
+## 2.2 Three-piece assembly
+
+The current mechanical design consists of:
 
 | Component | Function |
 |---|---|
-| Left outer half | Contains and supports the silicone during curing |
+| Left outer half | Supports and contains the silicone |
 | Right outer half | Completes the mold enclosure |
-| Central insert | Holds the master component in position |
+| Central insert | Holds the master component |
 
-The central insert is designed to be removable.
+The central insert is removable and carries the master during the initial extraction stage.
 
-Instead of trying to extract the master while the outer mold halves are still assembled, the system allows the outer halves to open first.
+The outer halves are opened first, providing access to the central insert.
 
-This provides additional mechanical access and reduces the possibility of damaging the silicone during extraction.
+This arrangement is intended to simplify demolding and reduce mechanical interference.
 
-### Intended extraction sequence
+### Assembly and extraction sequence
 
 ```text
-       ASSEMBLED MOLD
+       MOLD ASSEMBLY
              |
              v
-    SILICONE FULLY CURED
+      SYRINGE FILLING
              |
              v
-    RELEASE OUTER CLAMPS
+      SILICONE CURING
              |
              v
-    SEPARATE OUTER HALVES
+      OPEN OUTER HALVES
              |
              v
-    REMOVE CENTRAL INSERT
-      + MASTER TOGETHER
+      REMOVE CENTRAL INSERT
+        WITH THE MASTER
              |
              v
-    SEPARATE MASTER FROM
-       SILICONE NEGATIVE
+       SEPARATE MASTER
+        FROM SILICONE
              |
              v
-       FINISHED MOLD
+       FINISHED NEGATIVE
 ```
 
-## 2.3 Central insert design
+## 2.3 Central insert
 
-The central insert is one of the most important components of this architecture.
+The central insert is responsible for maintaining the master in its intended position.
 
-It provides a positioning interface for the master and allows the master to be removed together with the insert.
+Its geometry must allow extraction without creating mechanical locks.
 
-The insert must have:
+Important design considerations:
 
-- A controlled extraction direction.
-- Sufficient structural rigidity.
-- Accurate positioning relative to the outer mold halves.
-- A secure master mounting interface.
-- Adequate clearance from surrounding geometry.
-- No unwanted mechanical locking features.
+- Controlled extraction direction.
+- Adequate wall thickness.
+- Structural rigidity.
+- Secure master mounting.
+- Correct alignment with outer halves.
+- Clearance around extraction surfaces.
+- No unintended silicone leakage paths.
 
 ### Draft angles
 
-Draft angles are intentional inclinations applied to surfaces to facilitate extraction.
+Draft angles are inclined surfaces designed to facilitate component extraction.
 
-Without draft, surfaces that are nominally parallel to the extraction direction can experience considerable friction, especially when the printed components are not perfectly smooth.
+For preliminary CAD development, approximately 2–3° can be considered on suitable non-functional surfaces.
 
-For initial design studies, a draft angle of approximately 2–3° can be considered on non-functional insert surfaces.
+The final value depends on the extraction direction, surface finish and geometry.
 
-This is a preliminary design recommendation, not a universal requirement.
+Draft angles do not eliminate the need to inspect undercuts.
 
-The actual angle depends on the geometry, material, surface finish and extraction direction.
+## 2.4 Mechanical alignment
 
-**Important:** Draft angles do not automatically solve undercuts. Any reverse-facing geometry must be evaluated independently.
+The assembly must return to its original position after every disassembly.
 
-## 2.4 Alignment and positioning
+Misalignment can produce uneven silicone thickness, incorrect master positioning and leakage.
 
-The outer mold halves and central insert must return to the same position during every assembly.
-
-Misalignment can cause:
-
-- Uneven silicone thickness.
-- Incorrect master positioning.
-- Silicone leakage.
-- Flash formation.
-- Uneven contact between mechanical components.
-
-Possible positioning solutions include:
+Possible alignment solutions include:
 
 - Dowel pins.
 - Cylindrical locating features.
 - Male/female registration keys.
 - Recessed alignment pockets.
 
-For the first prototype, I intend to investigate two to four locating features depending on the available space.
+The number and position of locating features should be determined according to the available geometry.
 
-## 2.5 Clamping system
+## 2.5 Custom clamping system
 
-The clamping system maintains the mold assembly in its intended configuration during pouring and curing.
+The project uses a custom clamping mechanism rather than assuming a conventional bolted mold enclosure.
 
-It must resist the hydrostatic pressure generated by the liquid silicone and prevent the components from separating.
+The clamping system must maintain contact between the mold components during syringe filling and curing.
 
-For a simple static mold, the pressure at a depth can be approximated by:
+Its main engineering requirements are:
+
+- Consistent positioning.
+- Resistance to separation.
+- Resistance to deformation.
+- Uniform contact pressure.
+- Repeatable assembly.
+- Access for disassembly.
+
+### Pressure generated during filling
+
+Even manual syringe filling generates pressure inside the mold.
+
+The force acting on the mold enclosure can be approximated by:
 
 \[
-P=\rho gh
+F=P A
 \]
 
 Where:
 
-- \(P\) = hydrostatic pressure (Pa).
-- \(\rho\) = silicone density (kg/m³).
-- \(g\) = gravitational acceleration (m/s²).
-- \(h\) = liquid height (m).
+- \(F\) = force acting on the enclosure.
+- \(P\) = internal pressure.
+- \(A\) = effective projected area.
 
-Although the pressure in a small mold is generally modest, the assembly still needs to be sufficiently rigid to prevent leakage and deformation.
+This means that even a relatively small internal pressure can generate a significant separating force when acting over a large area.
 
-Possible clamping solutions:
+The clamping system must therefore be evaluated according to the actual filling pressure, not simply the weight of the silicone.
 
-- M3/M4 fasteners.
-- External mechanical clamps.
-- Threaded inserts.
-- Integrated clamping features.
-
-The selected system must allow repeated assembly without damaging the printed components.
+The mold should be tested for leakage and deformation before the first complete casting operation.
 
 ---
 
-# 03. MASTER PREPARATION AND SURFACE QUALITY
+# 03. SYRINGE-BASED SILICONE FILLING
 
-## 3.1 Master surface preparation
+## 3.1 Why use a syringe?
 
-The master defines the final internal geometry of the silicone mold.
+A syringe provides a controlled method of introducing uncured silicone into the mold.
 
-Consequently, its surface finish directly influences the quality of the silicone negative.
+Compared with gravity pouring, syringe filling allows the operator to control the material delivery rate and direct the silicone toward specific regions of the cavity.
 
-Before pouring, the master should be inspected for:
+This is particularly useful when the mold has restricted openings or complex internal geometry.
 
-- Surface imperfections.
-- Layer lines from 3D printing.
-- Unwanted holes or cavities.
-- Sharp edges.
-- Undercuts.
-- Contamination.
-- Moisture or residues.
+The syringe system must be compatible with the silicone viscosity and pot life.
 
-Depending on the intended reproduction quality, the master may require sanding, polishing, sealing or surface treatment.
+A large-bore syringe or dispensing barrel is preferable to a narrow needle for viscous silicone.
 
-## 3.2 Release agents
+A narrow nozzle can significantly increase flow resistance and the required injection force.
 
-A release agent can help prevent silicone from bonding to the master.
+## 3.2 Syringe and nozzle selection
 
-However, compatibility must be verified before use.
+The syringe must provide sufficient capacity and allow controlled material delivery.
 
-Some release agents can interfere with silicone curing or contaminate the mold surface.
+Relevant considerations include:
 
-The selected product must be compatible with the specific silicone chemistry.
-
-The master material must also be considered because certain silicones, particularly some addition-cure formulations, can be inhibited by contaminants or incompatible materials.
-
-A small compatibility test is recommended before manufacturing the complete mold.
-
-## 3.3 Undercuts
-
-Undercuts are geometric features that prevent a rigid component from being extracted along a simple straight direction.
-
-They are particularly important when designing the central insert.
-
-The master and the cured silicone may be flexible relative to one another, but that does not mean every undercut can be safely released.
-
-Excessive deformation can cause:
-
-- Tearing.
-- Permanent deformation.
-- Surface damage.
-- Premature mold failure.
-
-The extraction path must be evaluated in CAD before manufacturing.
-
----
-
-# 04. SILICONE MATERIAL PROPERTIES
-
-## 4.1 Silicone rubber
-
-Silicone rubber is an elastomeric material known for its flexibility, elastic recovery, thermal stability and resistance to environmental degradation.
-
-Its mechanical properties make it suitable for flexible molds that need to reproduce complex geometries.
-
-However, different silicone formulations can behave very differently.
-
-Material selection must be based on the intended application.
-
-## 4.2 Shore hardness
-
-Shore hardness is a measurement of a material's resistance to indentation.
-
-For silicone rubber, Shore A is commonly used.
-
-| Hardness | General behavior |
-|---|---|
-| Shore A 10–15 | Very soft and flexible |
-| Shore A 20–30 | Medium flexibility |
-| Shore A 40–50 | Firmer and more resistant to deformation |
-| Shore A 60+ | Relatively rigid elastomer |
-
-These are general descriptions rather than strict material classifications.
-
-A softer silicone can facilitate the removal of masters with complex geometry.
-
-However, very soft silicone may deform more easily during handling and casting.
-
-A harder silicone can provide better dimensional stability but may make extraction more difficult.
-
-The correct hardness must be selected according to:
-
-- Master geometry.
-- Undercut complexity.
-- Required dimensional accuracy.
-- Intended casting material.
-- Expected number of production cycles.
-
-## 4.3 Pot life and curing time
-
-Two important parameters must be understood before pouring.
-
-**Pot life:** The amount of time the mixed silicone remains sufficiently workable before its viscosity increases significantly.
-
-**Curing time:** The time required for the silicone to reach the specified cured state.
-
-These values are not interchangeable.
-
-The pouring operation must be completed within the manufacturer's specified working time.
-
-Curing time depends on the formulation, temperature, mixing conditions and other manufacturer-defined parameters.
-
-Always consult the technical datasheet of the selected silicone.
-
-## 4.4 Mixing ratio
-
-Many two-component silicone systems require mixing a base component with a curing agent.
-
-The ratio must be followed precisely.
-
-For example, if the manufacturer specifies a 1:1 mass ratio:
-
-\[
-m_A=m_B
-\]
-
-Where:
-
-- \(m_A\) = mass of component A.
-- \(m_B\) = mass of component B.
-
-For other formulations, the specified ratio may be different.
-
-The ratio must never be assumed.
-
-Incorrect mixing can result in:
-
-- Incomplete curing.
-- Soft or sticky regions.
-- Poor mechanical properties.
-- Reduced mold durability.
-
-A precision scale is recommended for weighing the components.
-
----
-
-# 05. MOLD VOLUME AND SILICONE CONSUMPTION
-
-## 5.1 Estimating the required silicone quantity
-
-Before pouring, I need to estimate the volume of the mold enclosure and subtract the volume occupied by the master and other solid components.
-
-The theoretical silicone volume can be represented as:
-
-\[
-V_s=V_b-V_m-V_i
-\]
-
-Where:
-
-- \(V_s\) = required silicone volume.
-- \(V_b\) = internal mold box volume.
-- \(V_m\) = master volume.
-- \(V_i\) = volume occupied by other internal inserts.
-
-This is a simplified approximation.
-
-In practice, I should also account for the pouring funnel, channels, vents and an additional allowance for material loss.
-
-If the mold geometry is complex, the volume can be calculated directly in CAD using the solid bodies.
-
-## 5.2 Converting volume into mass
-
-Once the silicone volume is known, the approximate mass can be calculated using density:
-
-\[
-m=\rho V
-\]
-
-Where:
-
-- \(m\) = required silicone mass.
-- \(\rho\) = silicone density.
-- \(V\) = calculated volume.
-
-The density must come from the manufacturer's datasheet.
-
-This calculation helps prevent mixing too little silicone or unnecessarily wasting material.
-
----
-
-# 06. POURING CHANNELS AND GATE DESIGN
-
-## 6.1 What is a pouring channel?
-
-The pouring channel, also called the gate or sprue depending on its geometry and function, is the passage through which liquid silicone enters the mold enclosure.
-
-Its purpose is to provide a controlled path from the pouring opening into the mold cavity.
-
-The geometry should allow the silicone to enter without excessive restriction.
-
-Important design parameters include:
-
-- Channel diameter.
-- Channel length.
-- Entrance geometry.
-- Funnel shape.
-- Cavity orientation.
+- Internal barrel diameter.
+- Barrel capacity.
+- Nozzle diameter.
+- Nozzle length.
+- Connection compatibility.
+- Plunger force.
 - Silicone viscosity.
-- Pouring speed.
 
-## 6.2 Funnel design
+A large-bore dispensing nozzle is preferable to a conventional hypodermic needle.
 
-A funnel makes pouring easier and reduces spillage.
+The objective is to minimize unnecessary restrictions between the syringe and mold cavity.
 
-The upper opening should be larger than the internal channel.
+The nozzle should also connect securely to the mold inlet to prevent leakage.
 
-This provides a larger target for manual pouring and creates a transition into the narrower inlet.
+## 3.3 Flow resistance
 
-For the first prototype, the following dimensions are proposed:
+When viscous silicone passes through a restricted channel, it experiences resistance to flow.
 
-| Feature | Initial design value |
-|---|---:|
-| Funnel opening | Ø15 mm |
-| Main inlet throat | Ø8 mm |
-| Funnel transition | Approximately 45° |
+For a simplified Newtonian fluid flowing through a cylindrical tube under laminar conditions, the Hagen–Poiseuille relationship is:
 
-These are experimental starting dimensions for a small-to-medium mold, not validated universal values.
+\[
+Q=\frac{\pi r^4\Delta P}{8\mu L}
+\]
 
-The correct dimensions depend on the silicone viscosity, cavity volume and filling behavior.
+Where:
 
-## 6.3 Top inlet versus bottom inlet
+- \(Q\) = volumetric flow rate.
+- \(r\) = internal channel radius.
+- \(\Delta P\) = pressure difference.
+- \(\mu\) = dynamic viscosity.
+- \(L\) = channel length.
 
-Two possible configurations were considered.
+This equation demonstrates an important relationship:
 
-### Top pouring
+**Small changes in channel diameter can produce large changes in flow resistance.**
 
-The silicone enters through an upper opening and travels through the cavity.
+For example, reducing the channel radius increases resistance substantially.
 
-Advantages:
+The equation is an idealized model. Real silicone formulations may be non-Newtonian, and actual filling behavior depends on the material formulation, temperature and geometry.
 
-- Simple mold construction.
-- Easy access for manual pouring.
-- Convenient funnel integration.
-- Suitable for gravity-fed filling when the geometry allows proper air evacuation.
+Nevertheless, it illustrates why the inlet should avoid unnecessary restrictions.
 
-Potential limitations:
+## 3.4 Injection channel design
 
-- Silicone may flow over recessed regions.
-- Air can become trapped beneath overhanging features.
-- Direct pouring can introduce additional bubbles.
+The injection channel must allow silicone to enter the mold without excessive pressure.
 
-### Bottom pouring
+The design should prioritize:
 
-The silicone enters from a lower opening and rises through the cavity.
+- Short flow paths.
+- Smooth internal transitions.
+- Adequate cross-sectional area.
+- Minimal sharp restrictions.
+- Secure syringe connection.
+- Easy cleaning or removal of cured material.
 
-Advantages:
+For the first prototype, the inlet diameter should be selected after checking the actual dispensing nozzle and silicone viscosity.
 
-- Can provide a rising fill front.
-- May allow air to move upward toward upper vents.
-- Can be useful for complex cavities where bottom filling produces a more controlled filling pattern.
+The previously considered Ø8 mm inlet is only a preliminary CAD reference, not a validated requirement.
 
-Potential limitations:
+A larger inlet may be appropriate depending on the dispensing equipment.
 
-- More complicated channel arrangement.
-- Requires careful vent placement.
-- May require a more controlled pouring setup.
+## 3.5 Injection funnel or connection port
 
-### Current design decision
+Because the system uses a syringe, the original gravity-pouring funnel is no longer essential.
 
-For the first prototype, I intend to retain the top inlet already integrated into my CAD model.
+Instead, the mold should incorporate a suitable syringe connection.
 
-There is no universal rule stating that a bottom inlet is always better.
+Possible configurations:
 
-The actual performance depends on the cavity geometry and the orientation of the mold during filling.
+- Straight cylindrical inlet.
+- Tapered syringe adapter.
+- Threaded connection.
+- Replaceable dispensing nozzle.
+- Short enlarged entry chamber.
 
-The most important objective is to prevent air from becoming trapped in regions that are filled early.
+A tapered connection may improve alignment between the syringe and the mold.
 
-The first casting test will help determine whether the current configuration needs modification.
+The connection must be sufficiently secure to prevent silicone escaping around the nozzle.
+
+The injection port should also be positioned where the operator can access it without interfering with the clamping mechanism.
 
 ---
 
-# 07. AIR VENTING AND BUBBLE PREVENTION
+# 04. INJECTION PORT POSITIONING
 
-## 7.1 Why are air vents necessary?
+## 4.1 Top, side or bottom inlet?
 
-When liquid silicone enters a closed mold enclosure, the air originally occupying the cavity must escape.
+The injection port does not necessarily need to be positioned at the top.
 
-If there is no adequate escape path, air can become trapped inside the silicone.
+Its position should be determined by the geometry of the cavity and the location of potential air traps.
 
-These trapped air pockets can create voids and incomplete surface reproduction.
+For a syringe-fed system, a side or lower inlet can be useful when it allows silicone to advance through the cavity while displacing air toward upper vents.
 
-Air vents provide a path for displaced air to leave the mold.
+### Bottom or lower-side injection
 
-They are particularly important around:
+Potential advantages:
 
-- Recessed geometry.
+- Allows a rising filling front.
+- Can direct air toward upper vent locations.
+- May be suitable for cavities with a clear upward filling path.
+
+Potential limitations:
+
+- Requires suitable positioning and support.
+- Can create long flow paths.
+- May require additional vents.
+
+### Top injection
+
+Potential advantages:
+
+- Easy syringe access in some configurations.
+- Simple integration into the current CAD model.
+- Suitable when the internal geometry supports progressive filling.
+
+Potential limitations:
+
+- Silicone can pass over recessed regions.
+- Air may become trapped below overhanging geometry.
+- Filling behavior may be less predictable in certain orientations.
+
+### Current design direction
+
+The existing top inlet can be retained for the first prototype if the cavity geometry and vent positions allow effective air evacuation.
+
+However, the preferred arrangement should be evaluated using the actual master geometry.
+
+The ideal configuration is one where the filling front moves progressively through the cavity and pushes air toward dedicated vent outlets.
+
+---
+
+# 05. AIR VENTING SYSTEM
+
+## 5.1 Purpose of air vents
+
+Air vents are essential because the silicone entering the mold must displace the air already occupying the cavity.
+
+Without adequate venting, air can become trapped.
+
+These trapped regions may produce:
+
+- Internal voids.
+- Missing surface details.
+- Incomplete filling.
+- Localized defects.
+- Reduced dimensional accuracy.
+
+The vent system must provide a path for air to escape throughout the filling operation.
+
+## 5.2 Vent positioning
+
+Vent positions should be selected according to the actual filling direction.
+
+The main vent should generally connect to the region expected to fill last.
+
+Additional vents may be necessary around:
+
+- Deep recesses.
 - Narrow channels.
-- Deep pockets.
 - Upper corners.
-- Local high points.
-- Areas with restricted silicone flow.
+- Localized pockets.
+- Regions behind complex geometry.
 
-## 7.2 Vent positioning
+A vent located in the wrong position may not effectively evacuate trapped air.
 
-Vent positioning should be based on the actual orientation of the mold during pouring.
+The CAD model should therefore be inspected in its intended filling orientation.
 
-The vents should connect the cavity regions most likely to trap air to the exterior.
+## 5.3 Vent dimensions
 
-A vent placed in the wrong location may provide very little benefit.
-
-For gravity pouring, the ideal arrangement generally allows the filling front to displace air toward the vent outlets.
-
-The position of the final air pockets must be evaluated using the geometry and filling orientation.
-
-## 7.3 Vent dimensions
-
-For the first prototype, I am considering the following starting values:
+For the initial prototype, the following dimensions can be investigated:
 
 | Feature | Preliminary dimension |
 |---|---:|
-| Main vent channel | Ø1.0–1.5 mm |
-| Larger vent option | Ø2.0 mm |
+| Primary vent channel | Ø1–1.5 mm |
+| Larger vent option | Ø2 mm |
 | External vent outlet | Approximately Ø2 mm |
 
-These dimensions are initial experimental values.
+These are experimental starting dimensions rather than fixed specifications.
 
-Vent sizing depends on the silicone viscosity, cavity geometry, vent length and pouring speed.
+The required vent diameter depends on:
 
-Smaller vents can restrict air movement, while excessively large vents can allow silicone to escape and produce unnecessary flash.
+- Silicone viscosity.
+- Injection speed.
+- Vent length.
+- Cavity geometry.
+- Filling pressure.
 
-## 7.4 Vent channels versus vent holes
+The objective is to allow air to escape without creating unnecessarily large silicone leakage paths.
 
-A vent does not necessarily need to be a cylindrical hole extending through the entire mold.
+## 5.4 Vent channels
 
-It can be a small channel connecting an air-trapping region to the external environment.
+A vent can be designed as a small passage connecting the cavity to the outside.
 
-Possible configurations include:
+Possible geometries include:
 
-- Straight cylindrical vents.
-- Shallow rectangular channels.
-- Small grooves along the parting surface.
-- Multiple microvents connected to an external outlet.
+- Cylindrical holes.
+- Shallow grooves.
+- Rectangular microchannels.
+- Channels following the parting surface.
 
-The design must ensure that the vent remains open during pouring.
+The channels should remain open during filling.
 
-## 7.5 Why more vents are not always better
+If a vent is too restrictive, air may remain trapped even when the mold has an external opening.
 
-Adding more vents can improve air evacuation, but it also increases the number of potential leakage paths.
+## 5.5 Injection and vent relationship
 
-The objective is not to maximize the number of vents.
+The injection and vent systems must work together.
 
-It is to provide sufficient air evacuation at the correct locations.
+The injection port introduces silicone.
 
-For the first prototype, I intend to begin with one main vent and add secondary vents only when the geometry or test results justify them.
+The vents release displaced air.
 
----
+The filling front should move toward the vent locations rather than surrounding isolated air pockets.
 
-# 08. GRAVITY POURING PROCEDURE
+The following simplified arrangement illustrates the intended principle:
 
-## 8.1 Understanding gravity pouring
+```text
+       AIR VENT
+          |
+          v
+   +----------------+
+   |                |
+   |   CAVITY       |
+   |                |
+   |                |
+   +--------+-------+
+            ^
+            |
+       SYRINGE INLET
+```
 
-Gravity pouring is a process in which liquid silicone enters the mold through an opening under the influence of gravity.
-
-Unlike pressure injection, the material is not forced into the cavity using an external injection system.
-
-The flow depends on:
-
-- Material viscosity.
-- Gravity.
-- Channel geometry.
-- Pouring height.
-- Channel restrictions.
-- Mold orientation.
-
-The objective is to achieve a continuous filling process while minimizing the introduction of air.
-
-## 8.2 Recommended pouring procedure
-
-The following procedure will be used as the initial experimental workflow.
-
-### Stage 1 — Mold preparation
-
-1. Inspect all printed components.
-2. Remove debris and printing residues.
-3. Check the alignment features.
-4. Verify that the mold halves fit correctly.
-5. Inspect the sealing surfaces.
-6. Apply a compatible release agent if required.
-7. Confirm that the master is securely attached to the central insert.
-
-### Stage 2 — Mold assembly
-
-1. Position the central insert.
-2. Install the two outer mold halves.
-3. Engage the alignment features.
-4. Tighten the clamping system evenly.
-5. Verify that no visible gaps remain.
-6. Confirm that the pouring inlet and vents are unobstructed.
-
-### Stage 3 — Silicone preparation
-
-1. Read the manufacturer's technical datasheet.
-2. Verify the required mixing ratio.
-3. Measure the components using an appropriate scale.
-4. Mix slowly and thoroughly.
-5. Avoid introducing unnecessary air during mixing.
-
-The mixing process must be completed within the available pot life.
-
-### Stage 4 — Pouring
-
-1. Position the mold in the intended pouring orientation.
-2. Introduce silicone through the pouring funnel.
-3. Maintain a slow and continuous flow.
-4. Avoid sudden interruptions or splashing.
-5. Observe the vent outlets.
-6. Continue until the cavity is completely filled.
-
-The silicone should be introduced in a way that allows the filling front to displace air rather than isolate it inside the cavity.
-
-### Stage 5 — Curing
-
-1. Keep the mold stationary.
-2. Avoid disturbing the assembly.
-3. Maintain the environmental conditions recommended by the manufacturer.
-4. Allow the silicone to cure for the specified period.
-
-The mold should not be opened prematurely.
+This is a conceptual representation only. The actual vent arrangement must follow the master geometry.
 
 ---
 
-# 09. VACUUM DEGASSING
+# 06. MATERIAL PREPARATION AND MIXING
 
-## 9.1 What is degassing?
+## 6.1 Two-component silicone
 
-Degassing is the removal of entrained air from a liquid material.
+Many mold-making silicones consist of two components that must be mixed before use.
 
-During silicone mixing, air can become incorporated into the material.
+The manufacturer's specified mixing ratio must be followed accurately.
 
-These bubbles may remain inside the cured silicone and affect the final mold quality.
+For a general two-component system:
 
-Vacuum degassing reduces the pressure surrounding the silicone, allowing trapped gas bubbles to expand and escape.
+\[
+m_A : m_B = \text{Specified ratio}
+\]
 
-## 9.2 Why it matters
+The ratio may be defined by mass or volume.
 
-Degassing can help reduce:
+It must never be assumed.
 
-- Internal voids.
-- Surface imperfections.
-- Bubble-related defects.
-- Incomplete reproduction of small details.
+Incorrect mixing can cause incomplete curing and inconsistent mechanical properties.
 
-However, vacuum degassing and mold venting solve different problems.
+## 6.2 Mixing technique
 
-**Vacuum degassing:** Removes air already incorporated into the mixed silicone.
+The objective is to obtain a homogeneous mixture while minimizing the amount of air introduced.
 
-**Mold venting:** Allows air inside the mold cavity to escape during filling.
+Recommended procedure:
 
-One does not replace the other.
+1. Measure the components accurately.
+2. Combine them in a suitable container.
+3. Mix thoroughly.
+4. Scrape the container walls and bottom.
+5. Avoid unnecessarily aggressive mixing.
+6. Transfer the material into the syringe or dispensing barrel.
 
-## 9.3 Important considerations
+The transfer operation should also minimize air introduction.
 
-When vacuum is applied, the silicone may expand significantly as bubbles grow.
+## 6.3 Pot life
 
-Therefore:
+Pot life is the available working time before the silicone becomes too viscous for the intended process.
 
-- The mixing container must have sufficient free volume.
-- The vacuum chamber must accommodate expansion.
-- The silicone must be monitored during degassing.
-- The manufacturer's processing recommendations must be followed.
+This parameter is especially important for syringe filling.
 
-If no vacuum chamber is available, controlled mixing and pouring become even more important.
+The complete operation, including mixing, transfer and injection, must be performed within the manufacturer's specified working time.
 
-A vacuum chamber is a useful improvement for future process development, but the first prototype can also be used to evaluate the baseline process without vacuum.
+The syringe and nozzle should not be allowed to remain filled with curing silicone longer than necessary.
 
 ---
 
-# 10. DEMOLDING AND MECHANICAL EXTRACTION
+# 07. VACUUM DEGASSING
 
-## 10.1 Extraction strategy
+## 7.1 What is degassing?
 
-The current mold architecture uses a removable central insert carrying the master component.
+Vacuum degassing removes air incorporated into the silicone during mixing.
 
-The extraction sequence is intentionally designed to separate the outer mold halves before removing the central insert.
+When the pressure surrounding the silicone is reduced, trapped bubbles expand and can escape from the liquid.
 
-This provides more clearance and reduces the possibility of mechanical interference.
+This helps reduce internal voids in the cured material.
 
-## 10.2 Extraction forces
+## 7.2 Degassing versus mold venting
 
-When components are separated, the required extraction force may come from several sources:
+These processes have different functions.
 
-- Friction between contacting surfaces.
-- Adhesion between materials.
-- Elastic deformation of silicone.
-- Mechanical interference.
-- Geometric undercuts.
-- Surface roughness.
+| Process | Purpose |
+|---|---|
+| Vacuum degassing | Removes air from the mixed silicone |
+| Mold venting | Releases air from the mold cavity during filling |
 
-The extraction system should distribute force across the carrier rather than concentrating it at one point.
+Vacuum degassing does not replace mold venting.
 
-## 10.3 Push holes and extraction points
+Similarly, a well-vented mold does not eliminate bubbles introduced during mixing.
 
-I considered two possible extraction configurations:
+Both systems can contribute to better results.
 
-**Single larger push hole**
+## 7.3 Process considerations
 
-A single push point can be sufficient for a small, rigid and well-supported carrier.
+Vacuum degassing should follow the silicone manufacturer's recommendations.
 
-However, applying force away from its center of resistance can cause rotation or tilting.
+The mixing container must have sufficient free volume because silicone can expand significantly under vacuum.
 
-**Multiple smaller push holes**
+The material should be degassed before transfer into the syringe when the processing instructions permit it.
 
-Multiple push points can distribute force and reduce the possibility of tilting.
+If no vacuum equipment is available, controlled mixing and transfer become especially important.
 
-For the current design, I intend to investigate two symmetrical extraction points.
+---
 
-### Preliminary extraction dimensions
+# 08. CURING PROCESS
 
-| Feature | Initial value |
-|---|---:|
-| Number of push points | 2 |
-| Threaded extraction interface | M5 |
-| Possible push-pin diameter | Ø4.8 mm |
-| Edge chamfer | 0.5 mm |
+## 8.1 Chemical curing
 
-These values are preliminary and must be checked against the printed wall thickness and carrier geometry.
+Silicone curing involves the formation of a crosslinked polymer network.
 
-A useful solution is to use two threaded M5 jack screws in the outer mold structure.
+During this process, the liquid material transforms into an elastomer.
 
-After opening the outer halves, the screws can be tightened gradually and alternately to push the carrier out.
+The exact chemical mechanism depends on the silicone formulation.
 
-The screws must contact reinforced pads on the carrier.
+Common systems include:
 
-They must not push directly against the master or delicate features.
+- Condensation-cure silicone.
+- Addition-cure silicone.
 
-The extraction system must also have sufficient thread engagement and structural support to avoid damaging the printed parts.
+These formulations have different chemical characteristics and compatibility requirements.
 
-## 10.4 Preventing mechanical locking
+## 8.2 Important curing parameters
 
-A major concern is the possibility of silicone entering unintended spaces around the central insert.
+The following information must be obtained from the selected silicone datasheet:
 
-If liquid silicone flows behind the insert and cures there, it can create an additional mechanical connection.
+- Mixing ratio.
+- Working time.
+- Recommended curing temperature.
+- Demolding time.
+- Full curing time.
+- Hardness after cure.
+- Compatibility restrictions.
 
-This can make extraction difficult or impossible without damaging the mold.
+The mold must remain stationary during curing.
 
-To prevent this, I need to evaluate:
+Opening the mold before the silicone has developed sufficient mechanical strength can cause deformation or tearing.
 
-- Contact between the central insert and outer halves.
-- Sealing around the insert perimeter.
-- Possible leakage paths.
+---
+
+# 09. DEMOLDING AND EXTRACTION MECHANICS
+
+## 9.1 Extraction architecture
+
+The mold is designed so that the two outer halves open before the central insert is removed.
+
+This provides access to the master carrier and reduces the possibility of interference.
+
+The intended sequence is:
+
+1. Allow the silicone to cure.
+2. Release the custom clamping mechanism.
+3. Open the left and right outer halves.
+4. Remove the central insert with the master.
+5. Separate the master from the silicone negative.
+
+## 9.2 Undercuts
+
+Undercuts are features that prevent straight-line extraction.
+
+They are particularly important because the selected Shore A 55 silicone is relatively firm compared with softer mold-making formulations.
+
+The silicone must deform sufficiently to release the master without tearing.
+
+The geometry must therefore be evaluated for:
+
 - Reverse-facing surfaces.
-- Undercuts.
-- Extraction clearance.
+- Recessed features.
+- Sharp internal corners.
+- Narrow passages.
+- Mechanical interference.
 
-The interface must be designed to prevent silicone from entering regions that are not intended to become part of the silicone negative.
+The actual tear strength and elongation of the selected silicone are more useful than hardness alone when evaluating difficult demolding conditions.
+
+## 9.3 Mechanical extraction assistance
+
+The current design includes the possibility of using two extraction points.
+
+The purpose is to distribute the force applied to the central insert.
+
+Two symmetrical extraction points can help reduce tilting when both are operated evenly.
+
+A possible arrangement uses threaded M5 interfaces with jack screws.
+
+The screws must push against reinforced areas of the carrier.
+
+They must not apply force directly to the master or thin printed walls.
+
+The extraction system must be tested before the silicone casting operation.
 
 ---
 
-# 11. 3D PRINTING AND MANUFACTURING CONSIDERATIONS
+# 10. 3D PRINTED MOLD QUALITY
 
-## 11.1 Why 3D printing?
+## 10.1 Surface integrity
 
-3D printing allows the production of custom mold components with relatively low manufacturing cost and short iteration cycles.
+FDM-printed parts contain layer interfaces and may contain microscopic gaps.
 
-It is particularly useful for developing:
+These gaps can allow liquid silicone to escape.
 
-- Complex internal geometry.
-- Custom positioning systems.
-- Pouring funnels.
-- Vent channels.
-- Mechanical extraction features.
-- Alignment structures.
+The printed mold should be inspected for:
 
-However, printed components are not automatically liquid-tight.
+- Layer separation.
+- Surface defects.
+- Gaps around interfaces.
+- Poor dimensional accuracy.
+- Incomplete sealing surfaces.
 
-## 11.2 Surface finish and sealing
+## 10.2 Wall thickness and rigidity
 
-FDM printing can produce layer lines and small gaps between adjacent extrusion paths.
-
-These defects can allow liquid silicone to leak through the mold box.
-
-Potential solutions include:
-
-- Increasing the number of wall perimeters.
-- Increasing the number of top and bottom layers.
-- Using an appropriate infill strategy.
-- Improving dimensional accuracy.
-- Applying a compatible surface sealant.
-- Testing the assembly before introducing silicone.
-
-The selected printing parameters must also consider the mechanical loads applied during clamping and extraction.
-
-## 11.3 Structural considerations
+The mold enclosure must resist the loads generated during assembly and syringe filling.
 
 Particular attention should be given to:
 
-- Thin walls around the cavity.
-- Threaded mounting areas.
-- Extraction holes.
-- Alignment pin supports.
+- Thin enclosure walls.
+- Injection port surroundings.
+- Vent passages.
 - Clamping interfaces.
-- Funnel connections.
+- Extraction holes.
+- Alignment features.
 
-The printed components should resist deformation during assembly and handling.
+The actual wall thickness should be selected according to the printed material, printing orientation and expected pressure.
 
-A component that is sufficiently strong under normal handling may still fail when extraction screws apply concentrated forces.
+## 10.3 Sealing
 
----
+Sealing is especially important in a syringe-fed system.
 
-# 12. COMMON DEFECTS AND FAILURE MODES
+The silicone must not leak through:
 
-Understanding possible defects before the first prototype helps establish a more effective inspection process.
+- The outer parting line.
+- The central insert interface.
+- The syringe connection.
+- Unsealed printed surfaces.
 
-| Defect | Possible cause | Potential solution |
-|---|---|---|
-| Air pockets | Insufficient venting | Add or reposition vents |
-| Surface bubbles | Air introduced during mixing | Improve mixing or degas |
-| Incomplete filling | Restricted flow | Review inlet geometry |
-| Silicone leakage | Poor sealing | Improve interfaces |
-| Incomplete curing | Incorrect mixing or inhibition | Verify ratio and compatibility |
-| Master trapped | Undercuts or mechanical locking | Modify extraction geometry |
-| Silicone tearing | Excessive demolding force | Improve release strategy |
-| Mold deformation | Insufficient support | Increase structural rigidity |
-| Excessive flash | Gaps between components | Improve fit and clamping |
-| Dimensional inaccuracies | Master positioning or deformation | Improve alignment and support |
-
-A failed prototype is not necessarily a failed development process.
-
-Each defect should be documented, analyzed and connected to a specific design or process variable.
+The assembled mold should be inspected and tested before introducing the silicone.
 
 ---
 
-# 13. INITIAL DESIGN SPECIFICATIONS
+# 11. PRELIMINARY DESIGN PARAMETERS
 
-The following table consolidates the dimensions currently being considered for the first prototype.
+The following values summarize the current design considerations.
 
-**These are starting values for experimentation, not validated production specifications.**
+They are preliminary experimental references, not validated manufacturing specifications.
 
-| Parameter | Initial value |
-|---|---:|
-| Main pouring funnel | Ø15 mm |
-| Main pouring inlet | Ø8 mm |
-| Primary vent | Ø1–1.5 mm |
+| Parameter | Current design direction |
+|---|---|
+| Cured silicone hardness | Shore A 55 |
+| Filling method | Manual syringe |
+| Mold architecture | Three-piece assembly |
+| Outer structure | 3D printed |
+| Master support | Removable central insert |
+| Injection port | Short, unrestricted connection |
+| Syringe nozzle | Large-bore dispensing tip |
+| Primary vent | Ø1–1.5 mm starting range |
 | Larger vent option | Ø2 mm |
-| Extraction points | 2 |
-| Extraction interface | M5 |
-| Push-pin diameter | Approximately Ø4.8 mm |
-| Insert draft | 2–3° |
-| Funnel transition | Approximately 45° |
+| Extraction points | Two symmetrical points |
+| Extraction interface | M5 under evaluation |
+| Filling orientation | To be validated |
+| Vacuum degassing | Optional process improvement |
 
-The final dimensions will depend on the silicone selected, mold geometry, manufacturing tolerances and results of the first casting test.
+**Important:** The final inlet diameter must be selected based on the syringe connection and uncured silicone viscosity. The vent dimensions must be validated through actual filling tests.
 
 ---
 
-# 14. EXPERIMENTAL DEVELOPMENT PLAN
-
-The first prototype should be treated as an experimental validation stage.
-
-Rather than changing several design parameters simultaneously, I intend to evaluate the system progressively.
+# 12. FIRST PROTOTYPE — MANUFACTURING PROCEDURE
 
 ## Phase 01 — CAD validation
 
-- [ ] Verify the three-piece mold architecture.
-- [ ] Check the master positioning.
-- [ ] Verify the central insert extraction direction.
-- [ ] Inspect potential undercuts.
-- [ ] Check wall thickness.
-- [ ] Verify pouring channel continuity.
-- [ ] Identify potential air-trapping locations.
-- [ ] Inspect sealing interfaces.
-- [ ] Verify extraction screw positioning.
+- [ ] Verify the mold enclosure.
+- [ ] Verify the central insert geometry.
+- [ ] Check the master mounting interface.
+- [ ] Verify the extraction direction.
+- [ ] Check potential undercuts.
+- [ ] Inspect injection channel geometry.
+- [ ] Inspect vent locations.
+- [ ] Check all sealing interfaces.
+- [ ] Verify the custom clamping system.
+- [ ] Check structural wall thickness.
 
-## Phase 02 — Printed prototype
+## Phase 02 — 3D printing
 
-- [ ] Manufacture the mold box.
+- [ ] Manufacture all mold components.
 - [ ] Inspect dimensional accuracy.
-- [ ] Check alignment pins.
-- [ ] Test clamping.
-- [ ] Verify that the mold opens correctly.
-- [ ] Test central insert extraction without silicone.
-- [ ] Check for mechanical interference.
-- [ ] Perform a leak test using a suitable non-reactive test fluid if appropriate for the materials and geometry.
+- [ ] Remove printing defects.
+- [ ] Verify alignment.
+- [ ] Test the clamping mechanism.
+- [ ] Test opening and extraction without silicone.
+- [ ] Inspect the syringe connection.
+- [ ] Verify that the vents are unobstructed.
 
 ## Phase 03 — Silicone preparation
 
-- [ ] Select the silicone formulation.
-- [ ] Read the technical datasheet.
-- [ ] Confirm the mixing ratio.
-- [ ] Verify material compatibility.
-- [ ] Estimate silicone volume.
-- [ ] Prepare the required tools.
-- [ ] Determine whether vacuum degassing is available.
-- [ ] Establish the pouring orientation.
+- [ ] Select the Shore A 55 formulation.
+- [ ] Obtain the technical datasheet.
+- [ ] Verify uncured viscosity.
+- [ ] Confirm mixing ratio.
+- [ ] Calculate material quantity.
+- [ ] Verify pot life.
+- [ ] Verify curing time.
+- [ ] Check material compatibility.
+- [ ] Prepare syringe and dispensing nozzle.
+- [ ] Prepare vacuum equipment if available.
 
-## Phase 04 — First casting test
+## Phase 04 — Syringe filling
 
-- [ ] Prepare the master.
-- [ ] Apply compatible release agent if required.
 - [ ] Assemble the mold.
-- [ ] Verify sealing.
+- [ ] Verify the clamping system.
+- [ ] Confirm that the injection port is sealed.
+- [ ] Confirm that vents are open.
 - [ ] Mix the silicone.
-- [ ] Pour at a controlled rate.
-- [ ] Observe the vent outlets.
-- [ ] Allow the silicone to cure.
-- [ ] Open the outer mold halves.
-- [ ] Extract the central insert.
-- [ ] Remove the master carefully.
+- [ ] Degas if applicable.
+- [ ] Transfer silicone into the syringe.
+- [ ] Connect the syringe to the inlet.
+- [ ] Introduce silicone gradually.
+- [ ] Monitor vent outlets.
+- [ ] Confirm complete filling.
+- [ ] Stop if abnormal pressure or leakage occurs.
 
-## Phase 05 — Inspection and evaluation
+## Phase 05 — Curing and extraction
 
-- [ ] Inspect the silicone surface.
-- [ ] Identify trapped air pockets.
-- [ ] Check dimensional reproduction.
-- [ ] Inspect the vent locations.
-- [ ] Check for flash.
-- [ ] Evaluate mold flexibility.
-- [ ] Evaluate demolding difficulty.
-- [ ] Document extraction problems.
-- [ ] Record silicone consumption.
-- [ ] Identify improvements for Revision 02.
+- [ ] Keep the mold stationary.
+- [ ] Follow the manufacturer's curing conditions.
+- [ ] Allow sufficient curing time.
+- [ ] Open the outer halves.
+- [ ] Remove the central insert.
+- [ ] Extract the master carefully.
+- [ ] Inspect the silicone negative.
+- [ ] Document defects.
 
 ---
 
-# 15. VARIABLES TO RECORD DURING TESTING
+# 13. FAILURE ANALYSIS
 
-For the first casting, I want to record the actual manufacturing parameters rather than relying only on visual impressions.
+| Problem | Possible cause | Engineering response |
+|---|---|---|
+| High syringe resistance | Narrow inlet or high viscosity | Increase flow area or shorten the inlet |
+| Silicone leaking | Poor sealing or excessive pressure | Improve interfaces and filling control |
+| Trapped air | Incorrect vent positioning | Relocate or add vents |
+| Incomplete filling | Excessive flow resistance | Review channel geometry |
+| Surface bubbles | Air introduced during mixing | Improve mixing or degas |
+| Incomplete curing | Incorrect mixing or chemical inhibition | Check datasheet and compatibility |
+| Master difficult to remove | Undercuts or insufficient flexibility | Review geometry and material properties |
+| Silicone tearing | Excessive extraction stress | Improve extraction strategy |
+| Mold deformation | Insufficient structural rigidity | Reinforce printed components |
+| Excessive flash | Gaps between mold components | Improve sealing and alignment |
 
-| Variable | Recorded information |
+---
+
+# 14. EXPERIMENTAL VALIDATION
+
+The first prototype will be used to validate the mechanical assembly and syringe-filling system.
+
+The following information should be recorded during testing.
+
+| Variable | Measurement |
 |---|---|
-| Silicone brand | Manufacturer and product |
-| Silicone hardness | Shore A |
+| Silicone manufacturer | Product identification |
+| Shore hardness | Shore A 55 target |
+| Uncured viscosity | Datasheet value |
 | Mixing ratio | Manufacturer specification |
-| Mixed silicone mass | Grams |
-| Room temperature | °C |
-| Pot life | Manufacturer specification / observed |
+| Material quantity | Grams |
+| Pot life | Minutes |
 | Curing time | Hours |
-| Vacuum degassing | Yes / No |
-| Pouring orientation | Top / Bottom / Other |
-| Inlet diameter | mm |
+| Syringe capacity | mL |
+| Syringe nozzle diameter | mm |
+| Injection channel diameter | mm |
 | Vent diameter | mm |
-| Number of vents | Quantity |
-| Casting result | Pass / Fail |
-| Defects | Description |
-| Extraction result | Easy / Moderate / Difficult |
+| Filling orientation | Description |
+| Filling behavior | Observations |
+| Leakage | Yes / No |
+| Air pockets | Yes / No |
+| Extraction difficulty | Observations |
+| Final mold quality | Pass / Fail |
 
-These records will help identify relationships between process variables and final mold quality.
+The first test should focus on obtaining a complete, defect-free silicone negative rather than optimizing production speed.
+
+After the initial results, inlet geometry, vent positioning and mechanical design can be adjusted independently.
 
 ---
 
-# 16. ENGINEERING PRINCIPLES TO UNDERSTAND BEFORE PRODUCTION
+# 15. ENGINEERING KNOWLEDGE REQUIRED
 
-Before proceeding to a complete manufacturing cycle, I need to understand the following concepts in greater depth.
+Before manufacturing the first prototype, I need to understand the following principles.
 
 ### Fluid mechanics
 
-- Hydrostatic pressure.
 - Viscosity.
-- Laminar and turbulent flow.
+- Pressure and flow rate.
+- Hagen–Poiseuille relationship.
+- Laminar flow.
 - Flow restrictions.
-- Gravity-driven filling.
+- Hydrostatic pressure.
 - Air displacement.
 
-### Materials science
+### Polymer science
 
+- Silicone chemistry.
+- Crosslinking.
+- Addition and condensation curing.
 - Elastomer behavior.
 - Shore hardness.
-- Elastic recovery.
-- Polymer crosslinking.
-- Addition-cure versus condensation-cure silicone.
-- Chemical compatibility.
-- Curing inhibition.
+- Tear strength.
+- Elongation at break.
+- Material compatibility.
 
-### Mechanical design
+### Mechanical engineering
 
 - Draft angles.
 - Undercuts.
 - Parting lines.
-- Tolerances and clearances.
-- Mechanical alignment.
-- Contact pressure.
+- Mechanical tolerances.
+- Alignment systems.
+- Clamping forces.
 - Extraction forces.
+- Structural rigidity.
 
 ### Manufacturing engineering
 
-- Design for Manufacturing (DFM).
-- Additive manufacturing.
+- FDM printing.
 - Surface finishing.
+- Sealing techniques.
 - Dimensional inspection.
 - Process repeatability.
-- Quality control.
-
-Understanding these subjects will make it possible to move beyond simply following a mold-making tutorial and start designing a manufacturing process based on engineering principles.
+- Design for Manufacturing.
 
 ---
 
-# 17. FUTURE DEVELOPMENT
+# 16. FUTURE DEVELOPMENT
 
-After validating the first silicone mold, possible improvements include:
+Once the first prototype has been validated, the following improvements can be investigated:
 
-- Optimizing the pouring funnel.
-- Testing alternative vent configurations.
-- Evaluating vacuum degassing.
-- Improving the central insert.
-- Reducing silicone consumption.
-- Improving extraction mechanics.
-- Testing different Shore hardness formulations.
-- Improving mold dimensional accuracy.
-- Evaluating casting materials and production cycles.
+- Optimization of syringe connections.
+- Alternative injection channel geometries.
+- Improved vent distribution.
+- Reduced silicone consumption.
+- Better master positioning.
+- Improved central insert extraction.
+- Alternative Shore hardness formulations.
+- Vacuum degassing integration.
+- Improved sealing methods.
+- Repeatability testing.
 
-The long-term objective is to establish a repeatable, documented and scalable mold manufacturing workflow for custom Tuka Customs components.
+The long-term objective is to establish a controlled and repeatable silicone mold manufacturing process for custom Tuka Customs components.
 
 ---
 
-# 18. REFERENCES AND TECHNICAL RESEARCH
+# 17. REFERENCES AND TECHNICAL DOCUMENTATION
 
-The theoretical development of this project should be supported by technical documentation and reliable engineering references.
+The following references will support the theoretical development of this project.
 
-The following sources are recommended for further study:
-
-1. **Silicone manufacturer technical datasheets** — Mixing ratios, viscosity, pot life, curing time, hardness and material compatibility.
-2. **Silicone manufacturer processing guides** — Mixing, vacuum degassing, pouring and demolding.
+1. **Silicone manufacturer technical datasheets** — Viscosity, mixing ratio, pot life, curing time, hardness and mechanical properties.
+2. **Silicone processing guides** — Mixing, degassing, dispensing and demolding.
 3. **ASTM D2240** — Standard Test Method for Rubber Property: Durometer Hardness.
-4. **Engineering Fluid Mechanics textbooks** — Hydrostatic pressure, viscosity and fluid flow.
-5. **Polymer Science and Engineering references** — Elastomer chemistry, curing and crosslinking.
-6. **Additive Manufacturing references** — FDM printing, dimensional tolerances and surface quality.
+4. **ASTM D624** — Standard Test Method for Tear Strength of Conventional Vulcanized Rubber and Thermoplastic Elastomers.
+5. **Fluid Mechanics textbooks** — Pressure, viscosity, flow resistance and fluid transport.
+6. **Polymer Science references** — Elastomer chemistry and crosslinking.
+7. **Additive Manufacturing references** — FDM printing, dimensional accuracy and structural properties.
 
-Specific product datasheets and experimental observations should be added here once the silicone formulation and manufacturing materials have been selected.
+Specific material datasheets must be added once the selected silicone formulation is confirmed.
 
 ---
 
-# 19. DEVELOPMENT LOG
+# 18. DEVELOPMENT LOG
 
-| Revision | Development stage | Status |
+| Revision | Description | Status |
 |---|---|---|
-| 01 | Theoretical study and initial mold architecture | In progress |
-| 02 | CAD validation and mechanical improvements | Pending |
-| 03 | First printed mold prototype | Pending |
-| 04 | First silicone casting | Pending |
-| 05 | Inspection and design corrections | Pending |
-| 06 | Validated manufacturing procedure | Pending |
+| 01 | Initial mold architecture and gravity-pouring study | Superseded |
+| 02 | Syringe-based filling and Shore A 55 study | Current |
+| 03 | CAD design validation | Pending |
+| 04 | First printed prototype | Pending |
+| 05 | First syringe-filling experiment | Pending |
+| 06 | Inspection and design optimization | Pending |
+| 07 | Validated manufacturing procedure | Pending |
 
 ---
 
@@ -1097,8 +967,8 @@ Specific product datasheets and experimental observations should be added here o
 
 *Engineering through experimentation.*
 
-`DESIGN` · `PROTOTYPE` · `TEST` · `IMPROVE`
+`RESEARCH` · `DESIGN` · `MANUFACTURE` · `VALIDATE`
 
-**END OF DOCUMENT // REV. 01**
+**END OF DOCUMENT // REV. 02**
 
 </p>
